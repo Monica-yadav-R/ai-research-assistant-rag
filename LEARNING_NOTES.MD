@@ -89,3 +89,54 @@ PDF extraction will eventually produce many passages. Keeping each passage's sou
 
 ### Next Learning Goal
 Learn how to store multiple research-paper passages in a Python list and access them one at a time.
+
+## Session 1 Progress Update — Python Data Structures
+
+### Verified Completed
+- [x] Created and ran `main.py` with research-passage metadata.
+- [x] Stored multiple passage dictionaries in a list.
+- [x] Accessed passages using list indexing.
+- [x] Used a `for` loop to process every passage.
+- [x] Printed source and page citations for each passage.
+- [x] Counted passages using `len(passages)`.
+- [x] Verified the output for two passages.
+
+### Current Python Concepts
+- Dictionaries and key-value pairs.
+- Lists and zero-based indexing.
+- Loops and indentation.
+- f-strings.
+- `len()` for counting list items.
+
+### Current Architecture
+- `main.py` contains a small Python practice exercise.
+- PDF extraction, chunking, embeddings, vector search, and LLM generation have not been implemented.
+
+### Next Task
+Learn Python functions and use one to print a research passage with its citation.
+
+
+## Session 1: Lists, Loops, and Passage Counting
+
+### Concepts Learned
+- Lists store multiple items in order.
+- List indexing starts at 0.
+- Dictionaries store each passage's text and metadata.
+- A `for` loop processes each passage automatically.
+- `len()` counts the items in a list.
+- Indentation determines whether a statement is inside or outside a loop.
+- f-strings format source filenames and page numbers into readable citations.
+
+### Practical Exercise
+Updated `main.py` to store two research passages in a list. Used a loop to print each passage's text, source, and page number, then used `len(passages)` to print the total count.
+
+### Verified Results
+- The script printed both passages and their citations.
+- The script printed the total count once, after the loop.
+- The observed count was `2`.
+
+### Connection to RAG
+A RAG application needs to manage multiple passages retrieved from research papers. Lists and loops help process these passages, while source and page metadata support traceable citations.
+
+### Next Learning Goal
+Learn Python functions and use one to print a research passage with its citation.

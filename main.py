@@ -1,9 +1,9 @@
-paper_passage = {
-    "source" :"climate_study.pdf",
-    "page": 7,
-    "text":"Rising temperatures can affect crop productivity"
-}
+passages = [
+    {"source" :"climate_study.pdf","page": 7,"text":"Rising temperatures can affect crop productivity"},
+    {"source":"climate_study.pdf","page":8,"text":"Rainfall patterns influence yields."}
+]
 
-print(paper_passage["source"])
-print(paper_passage["text"])
-print(f"Source: {paper_passage['source']}, Page: {paper_passage['page']}")
+for passage in passages:
+    print(passage["text"])
+    print(f"Source: {passage['source']}, Page: {passage['page']}")
+print(len(passages))
