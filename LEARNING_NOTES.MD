@@ -37,3 +37,30 @@ Not yet studied in detail.
 - How does retrieval-augmented generation work internally?
 - What are Python virtual environments, and why do we use them?
 - How does Git track project history?
+
+## Session 1: Virtual Environment
+
+### What Is a Virtual Environment?
+A Python virtual environment provides an isolated location for a project's Python packages. This helps prevent dependency conflicts between different projects.
+
+### Commands Practiced
+- python -m venv .venv — creates the virtual environment.
+- .\.venv\Scripts\Activate.ps1 — activates it in PowerShell.
+- python --version — checks the Python version.
+- (Get-Command python).Source — shows which Python executable PowerShell uses.
+- python -m pip --version — checks pip and its installation location.
+- python -m pip list — lists installed packages.
+- git status — checks repository changes.
+
+### Verified Results
+- Python version: 3.11.0.
+- Active interpreter: .venv\Scripts\python.exe.
+- pip version: 22.3.
+- Baseline packages: pip and setuptools.
+- The .venv folder is ignored by Git.
+
+### Debugging Lesson
+A successful command should be followed by a check that confirms the expected result. For example, the interpreter path verified that activation changed which Python executable was being used.
+
+### Next Learning Goal
+Write and run a small Python script before introducing document-processing or RAG libraries.

@@ -30,3 +30,15 @@
 - Choice: Test commands and code and record observed results.
 - Reason: Keep project progress accurate and make debugging reproducible.
 - Status: Accepted.
+
+## Decision 7: Use a project-specific Python virtual environment
+- Choice: Use Python venv in the .venv directory.
+- Reason: Isolate project dependencies and reduce conflicts with other Python projects.
+- Cost: No additional environment-management package is required.
+- Verification: Confirmed that the active interpreter is .venv\Scripts\python.exe.
+- Status: Accepted and verified.
+
+## Decision 8: Delay installing RAG dependencies
+- Choice: Do not install PDF, embedding, vector-search, or LLM libraries before the initial environment checks and architecture planning.
+- Reason: Keep the starting environment simple and make dependency changes easier to diagnose.
+- Status: Accepted; dependency selection is pending.
