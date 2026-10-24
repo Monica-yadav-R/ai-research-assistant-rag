@@ -64,3 +64,28 @@ A successful command should be followed by a check that confirms the expected re
 
 ### Next Learning Goal
 Write and run a small Python script before introducing document-processing or RAG libraries.
+
+## Session 1: First Python Exercise — Research Paper Metadata
+
+### Concepts Learned
+- A Python dictionary stores related information as key-value pairs.
+- Dictionary keys can retrieve individual values, such as `paper_passage["source"]`, `paper_passage["page"]`, and `paper_passage["text"]`.
+- An f-string combines Python values with readable text.
+- Source filenames and page numbers help connect evidence to its original research paper.
+
+### Practical Exercise
+Created `main.py` with a dictionary representing one research-paper passage:
+- Source: `climate_study.pdf`
+- Page: `7`
+- Text: `Rising temperatures can affect crop productivity.`
+
+### Verified Results
+- Ran `python main.py` successfully.
+- Retrieved individual dictionary values.
+- Constructed a citation string containing the source filename and page number.
+
+### Connection to RAG
+PDF extraction will eventually produce many passages. Keeping each passage's source and page metadata allows retrieved evidence to be traced back to the original document.
+
+### Next Learning Goal
+Learn how to store multiple research-paper passages in a Python list and access them one at a time.

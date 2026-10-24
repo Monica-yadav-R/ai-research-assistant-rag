@@ -74,3 +74,29 @@ Standardize the tracking filenames, initialize Git, and verify the repository st
 
 ### Next Task
 Update learning notes and engineering decisions, then begin the first small Python exercise.
+
+## Session 1 Progress Update — First Python Exercise
+
+### Verified Completed
+- [x] Created `main.py` with a research-paper passage dictionary.
+- [x] Stored the source filename, page number, and passage text.
+- [x] Retrieved individual values using dictionary keys.
+- [x] Used an f-string to format a source-and-page citation.
+- [x] Ran `python main.py` and observed the expected citation output.
+- [x] Added the exercise and its RAG connection to `LEARNING_NOTES.MD`.
+
+### Current Python Concepts
+- Dictionaries and key-value pairs.
+- Accessing values using dictionary keys.
+- f-strings for readable output.
+
+### Current Git State
+- The documentation changes and `main.py` need to be reviewed and committed.
+- The untracked `handoff prompt` file remains untouched.
+
+### Completed in Session 1
+- Updated learning notes and engineering decisions.
+- Created and tested the first Python script for research-paper metadata.
+
+### Next Task
+Learn how a Python list can store multiple research-paper passages, then access each passage individually.
