@@ -12,9 +12,10 @@
 - Status: Accepted.
 
 ## Decision 3: Preserve source metadata
-- Choice: Track source document names and page numbers during PDF processing.
+- Choice: Track source document names and page numbers during PDF processing and preserve them in every generated chunk.
 - Reason: Answers need traceable citations to the original research papers.
-- Status: Planned; implementation not started.
+- Verification: Implemented in `pdf_extractor.py` and `text_chunker.py`; automated tests verify metadata preservation.
+- Status: Accepted and implemented.
 
 ## Decision 4: Ground answers in retrieved evidence
 - Choice: Answers should use relevant retrieved passages and acknowledge insufficient evidence.
@@ -42,3 +43,12 @@
 - Choice: Do not install PDF, embedding, vector-search, or LLM libraries before the initial environment checks and architecture planning.
 - Reason: Keep the starting environment simple and make dependency changes easier to diagnose.
 - Status: Accepted; dependency selection is pending.
+
+
+## Decision 9: Initial word-based chunking
+- Choice: Split each nonempty page into chunks using a configurable word count and overlap.
+- Initial defaults: 300 words per chunk and 50 words of overlap.
+- Reason: Provide a simple, testable baseline before introducing token-aware or sentence-aware chunking.
+- Trade-off: Word counts do not correspond exactly to model token limits, and the initial settings have not been evaluated on real research papers.
+- Verification: `text_chunker.py` implemented; chunking and PDF extraction tests passed in the latest verified run (12 tests).
+- Status: Accepted as an initial baseline; evaluation pending.

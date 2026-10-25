@@ -38,13 +38,15 @@ Stage 1 — Project setup and foundations.
 - [x] First Python passage exercise implemented and tested
 - [ ] Dependencies selected and documented
 - [x] PDF extraction implemented
+- [x] Text chunking with overlap implemented
+- [ ] Embedding generation implemented
 - [ ] RAG pipeline implemented
 
 ## Current Task
- Record and commit the completed PDF extraction component.
+Review and commit the tested text chunking component.
 
 ## Next Task
- Design and implement text chunking with overlap while preserving source filenames and page numbers.
+Learn embedding models and convert text chunks into numerical vectors while preserving their metadata.
 
 ## Important Rules
 - Implement one small step at a time.
@@ -171,3 +173,30 @@ Test coverage:
 
 ### Next milestone
 Implement text chunking and overlap while preserving source and page metadata.
+
+## Text Chunking — Completed
+
+**Module:** `text_chunker.py`
+
+**Test file:** `tests/test_text_chunker.py`
+
+### Implemented
+- Splits each nonempty page into word-based chunks.
+- Supports configurable chunk size and overlap.
+- Preserves source filename and page number for each chunk.
+- Skips blank or whitespace-only page text.
+- Rejects invalid chunk-size and overlap settings.
+- Stops creating chunks when the current chunk reaches the end of the page.
+
+### Automated tests
+Command: `python -m unittest discover -s tests -v`
+
+**Last verified result:** 12 tests passed.
+
+### Limitations
+- Chunking is word-based, not token-based or sentence-aware.
+- The initial defaults of 300 words and 50 words of overlap have not been evaluated against real research questions.
+- Extraction and chunking have not yet been evaluated together on a real research paper.
+
+### Next milestone
+Generate embeddings for the chunks while preserving source and page metadata.

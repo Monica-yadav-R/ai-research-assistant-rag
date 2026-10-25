@@ -201,3 +201,34 @@ The tests cover metadata extraction, blank-page preservation, missing files, inc
 ### Next learning milestone: Chunking and overlap
 
 Learn how to divide extracted text into smaller passages suitable for embedding and retrieval. Preserve the source filename and page number for each chunk so that retrieved evidence can be cited later.
+
+## Session: Text Chunking and Overlap
+
+### Goal
+Split extracted PDF page text into smaller passages while preserving citation metadata.
+
+### Concepts learned
+- `str.split()` converts text into a list of whitespace-separated words.
+- Python slicing selects a portion of a list using `words[start:end]`.
+- The step size is calculated as `chunk_size - overlap`.
+- Overlap repeats words between neighboring chunks to help retain context.
+- Each chunk retains the original source filename and page number.
+- Empty page text is skipped.
+- Invalid chunk-size and overlap settings raise `ValueError`.
+
+### Implementation
+- Module: `text_chunker.py`
+- Function: `chunk_pages()`
+- Tests: `tests/test_text_chunker.py`
+
+### Verified test result
+Command: `python -m unittest discover -s tests -v`
+
+Result: 12 tests passed in the latest verified run, including PDF extraction and chunking tests.
+
+### Limitations
+- Word-based chunking does not guarantee alignment with model token limits or sentence boundaries.
+- Chunk size and overlap remain initial settings and require evaluation.
+
+### Next learning milestone
+Understand embedding models and how they represent text as numerical vectors for semantic search.
