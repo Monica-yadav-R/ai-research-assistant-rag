@@ -140,3 +140,64 @@ A RAG application needs to manage multiple passages retrieved from research pape
 
 ### Next Learning Goal
 Learn Python functions and use one to print a research passage with its citation.
+
+## Session: PDF Text Extraction
+
+### Goal
+Build a reusable component that extracts text from PDF research papers and preserves the metadata needed for citations.
+
+### Implementation
+- File: `pdf_extractor.py`
+- Library: PyMuPDF
+- Function: `extract_pdf_pages(path: str) -> list[dict]`
+- Test file: `tests/test_pdf_extractor.py`
+
+Each extracted page is represented as a dictionary containing:
+- `source`: PDF filename
+- `page`: one-based page number
+- `text`: extracted page text
+
+### Engineering lessons
+
+**1. Preserve source metadata**
+
+Page numbers and filenames must travel with the text so that later retrieval can identify the original evidence.
+
+**2. Use a context manager**
+
+`with pymupdf.open(path) as doc:` ensures the document is closed when processing exits the block, including when an exception occurs.
+
+**3. Preserve blank pages during extraction**
+
+A blank page produces an empty string. We preserve its record to retain the original document's page numbering. Empty text can be filtered during a later processing stage.
+
+**4. Validate input paths**
+
+`Path.is_file()` checks whether the path refers to an existing file. Checking `Path.suffix.lower()` validates the extension, but does not guarantee that the file is a valid PDF.
+
+**5. Handle errors deliberately**
+
+Missing files, incorrect extensions, and corrupt PDF content are different failure cases. Letting errors propagate keeps failures visible to the calling application.
+
+**6. Write specific automated tests**
+
+A broad `assertRaises(Exception)` can pass because of unrelated errors. Testing for `pymupdf.FileDataError` makes the corrupt-PDF test more precise.
+
+### Verified test result
+
+Command:
+`python -m unittest discover -s tests -v`
+
+Result: 5 tests passed in the latest verified run.
+
+The tests cover metadata extraction, blank-page preservation, missing files, incorrect extensions, and corrupt PDF content.
+
+### Limitations
+
+- Scanned PDFs requiring OCR have not been implemented.
+- The tests use generated PDFs; extraction from real research papers remains to be verified.
+- Complex layouts and tables have not been evaluated.
+
+### Next learning milestone: Chunking and overlap
+
+Learn how to divide extracted text into smaller passages suitable for embedding and retrieval. Preserve the source filename and page number for each chunk so that retrieved evidence can be cited later.

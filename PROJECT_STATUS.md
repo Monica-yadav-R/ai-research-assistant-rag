@@ -37,14 +37,14 @@ Stage 1 — Project setup and foundations.
 - [x] Python virtual environment created and verified
 - [x] First Python passage exercise implemented and tested
 - [ ] Dependencies selected and documented
-- [ ] PDF extraction implemented
+- [x] PDF extraction implemented
 - [ ] RAG pipeline implemented
 
 ## Current Task
-Review and commit the verified Python practice exercise and its documentation updates.
+ Record and commit the completed PDF extraction component.
 
 ## Next Task
-Learn Python functions and write one that prints a research passage with its source and page citation.
+ Design and implement text chunking with overlap while preserving source filenames and page numbers.
 
 ## Important Rules
 - Implement one small step at a time.
@@ -134,3 +134,40 @@ Learn Python functions and write one that prints a research passage with its sou
 
 ### Next Task
 Learn Python functions and use one to print a research passage with its citation.
+
+## PDF Text Extraction — Completed
+
+**Module:** `pdf_extractor.py`
+
+**Dependency:** PyMuPDF (`pymupdf`)
+
+### Implemented
+- Extracts text from each PDF page separately.
+- Preserves source filename, one-based page number, and extracted text.
+- Preserves blank pages as records with empty text.
+- Validates that the path exists and has a `.pdf` extension.
+- Uses a context manager to close the PDF safely.
+- Allows errors for missing or corrupt PDFs to propagate to the caller.
+
+### Automated tests
+Test file: `tests/test_pdf_extractor.py`
+
+Command:
+`python -m unittest discover -s tests -v`
+
+**Last verified result:** 5 tests passed.
+
+Test coverage:
+- Page text and metadata extraction
+- Blank-page preservation
+- Missing-file handling
+- Incorrect file extension
+- Corrupt PDF handling
+
+### Known limitations
+- Scanned PDFs requiring OCR are not supported yet.
+- Testing so far uses generated sample PDFs, not a real research paper.
+- Extraction quality on complex layouts, tables, and multi-column papers remains unverified.
+
+### Next milestone
+Implement text chunking and overlap while preserving source and page metadata.
