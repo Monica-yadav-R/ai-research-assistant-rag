@@ -52,3 +52,31 @@
 - Trade-off: Word counts do not correspond exactly to model token limits, and the initial settings have not been evaluated on real research papers.
 - Verification: `text_chunker.py` implemented; chunking and PDF extraction tests passed in the latest verified run (12 tests).
 - Status: Accepted as an initial baseline; evaluation pending.
+
+## Decision 10: Initial embedding model
+
+- **Choice:** Use `sentence-transformers/all-MiniLM-L6-v2` as the initial local embedding model.
+- **Reason:** It provides a compact baseline for semantic search without requiring a paid embedding API.
+- **Verification:** The model loaded successfully, generated 384-dimensional vectors, and was used in a cosine-similarity experiment.
+- **Trade-off:** Its retrieval quality still needs to be evaluated on real research papers and questions.
+- **Status:** Accepted as the initial baseline; evaluation pending.
+
+## Decision 11: Use GPU for local embedding experiments
+
+- **Choice:** Use CUDA-enabled PyTorch and the NVIDIA GPU when appropriate.
+- **Environment:** PyTorch `2.14.1+cu130`; NVIDIA GeForce RTX 3050 Laptop GPU, reported 4 GB VRAM.
+- **Verification:** CUDA was available, and Sentence Transformers reported `cuda:0`.
+- **Benchmark:** On the tested synthetic workload, CPU took 1.235 seconds and GPU took 0.457 seconds.
+- **Trade-off:** Performance depends on workload and batch size; GPU memory is limited.
+- **Status:** Accepted for experimentation; real-paper performance remains unverified.
+
+## Decision 12: Reusable embedding-generation component
+
+- **Choice:** Implement embedding generation in `embedding_generator.py`, separate from PDF extraction and chunking.
+- **Model:** `sentence-transformers/all-MiniLM-L6-v2`.
+- **Output:** New chunk dictionaries containing the original fields and a normalized embedding vector.
+- **Model lifecycle:** Load the model separately and pass the instance into the embedding function for reuse.
+- **Validation:** Reject malformed chunks before embedding.
+- **Verification:** Seven embedding unit tests passed; the complete suite passed 19 tests; a real-model GPU experiment produced a 384-dimensional normalized vector.
+- **Trade-off:** The initial model is a baseline. Its retrieval quality must be evaluated before treating it as the final choice.
+- **Status:** Implemented and tested; commit pending.

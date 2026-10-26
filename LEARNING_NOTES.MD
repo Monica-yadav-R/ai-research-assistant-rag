@@ -232,3 +232,60 @@ Result: 12 tests passed in the latest verified run, including PDF extraction and
 
 ### Next learning milestone
 Understand embedding models and how they represent text as numerical vectors for semantic search.
+
+## Session: Embeddings and GPU Inference
+
+### Concepts learned
+- An embedding model converts text into a numerical vector that represents aspects of its meaning.
+- `sentence-transformers/all-MiniLM-L6-v2` produces vectors with 384 dimensions.
+- Semantic search compares a question's vector with document-chunk vectors to find potentially relevant passages.
+- Cosine similarity measures the similarity in vector direction. It is not a probability that an answer is correct.
+- Document embeddings can be reused until the underlying text or embedding model changes.
+- Sentence Transformers can run on a CPU or a supported NVIDIA GPU.
+- Batch size affects processing speed and memory usage.
+
+### Verified embedding experiment
+- Model: `sentence-transformers/all-MiniLM-L6-v2`
+- Device: `cuda:0`
+- Three example sentences produced an embedding array with shape `(3, 384)`.
+- Similarity between the two learning-related sentences: `0.5945`.
+- Similarity between a learning-related sentence and the photosynthesis sentence: `0.0413`.
+- These scores apply to this experiment; they are not universal relevance thresholds.
+
+### CPU versus GPU benchmark
+- Script: `benchmark_embeddings.py`
+- Workload: 1,000 synthetic repeated text inputs, batch size 32.
+- CPU time: 1.235 seconds.
+- GPU time: 0.457 seconds.
+- Observed speedup: 2.71x for this benchmark.
+- This result does not guarantee the same speedup for real research papers or other batch sizes.
+
+### Next milestone
+Implement a reusable embedding module that converts text chunks into vectors while preserving their source and page metadata.
+
+## Session: Reusable Embedding Generation
+
+### Implementation
+- Created `embedding_generator.py`.
+- `load_embedding_model(device=None)` loads the configured Sentence Transformer model.
+- `generate_embeddings(chunks, model)` embeds chunk text and returns new dictionaries containing the original metadata plus an `embedding` field.
+- Embeddings are normalized using `normalize_embeddings=True`.
+- Input validation rejects non-dictionary chunks, missing text, and empty or non-string text.
+- The model is passed into the embedding function so it can be reused rather than reloaded for every call.
+
+### Testing and verification
+- Added `tests/test_embedding_generator.py`.
+- Seven embedding unit tests passed.
+- Full test suite: 19 tests passed.
+- Real-model integration check: one chunk produced a 384-dimensional vector.
+- Source and page metadata were preserved.
+- The normalized vector's L2 norm was 1.0.
+- GPU inference succeeded using CUDA.
+
+### Limitations
+- Retrieval quality has not been evaluated yet.
+- Real research-paper workloads have not been benchmarked through the full pipeline.
+- FAISS integration is not implemented yet.
+
+### Next milestone
+Evaluate FAISS for vector storage and semantic retrieval.

@@ -12,10 +12,17 @@ Stage 1 — Project setup and foundations.
 - Git: 2.56.0.windows.1
 - Virtual environment: `.venv` (created and activated)
 - Python executable: `.venv\Scripts\python.exe`
-- Baseline packages: pip and setuptools
 - Git repository: initialized; branch `master`
 - GitHub remote: not configured
-- No RAG libraries installed yet
+- Embedding library: sentence-transformers 6.2.0
+- PyTorch: 2.14.1+cu130
+- CUDA build: 13.0
+- CUDA availability: verified True
+- GPU: NVIDIA GeForce RTX 3050 Laptop GPU (4 GB reported VRAM)
+- Embedding model: sentence-transformers/all-MiniLM-L6-v2
+- Embedding dimensions: 384
+- Vector search library: not selected yet
+- LLM integration: not implemented yet
 
 ## Architecture Plan
 1. PDF text extraction and page metadata
@@ -39,14 +46,17 @@ Stage 1 — Project setup and foundations.
 - [ ] Dependencies selected and documented
 - [x] PDF extraction implemented
 - [x] Text chunking with overlap implemented
-- [ ] Embedding generation implemented
+- [x] Embedding generation implemented
 - [ ] RAG pipeline implemented
+- [x] Embedding model installed and experimental generation verified
+- [x] Reusable embedding module implemented and tested
+- [ ] FAISS vector search implemented
 
 ## Current Task
-Review and commit the tested text chunking component.
+Document and commit the tested embedding-generation component.
 
 ## Next Task
-Learn embedding models and convert text chunks into numerical vectors while preserving their metadata.
+Evaluate FAISS for storing chunk embeddings and retrieving semantically relevant passages.
 
 ## Important Rules
 - Implement one small step at a time.
