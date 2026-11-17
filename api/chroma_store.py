@@ -1,7 +1,12 @@
+from __future__ import annotations
+
 from pathlib import Path
-from chromadb.api.models.Collection import Collection
+from typing import TYPE_CHECKING
+
 import numpy as np
-import chromadb
+
+if TYPE_CHECKING:
+    from chromadb.api.models.Collection import Collection
 
 #Project root directory
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,6 +19,8 @@ def get_chroma_collection():
     Initialize a persistent chromaDB client
     and return the research documents collection.
     """
+    import chromadb
+
     CHROMA_DIR.mkdir(parents=True,exist_ok=True)
     client = chromadb.PersistentClient(
         path=str(CHROMA_DIR)

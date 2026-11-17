@@ -1,20 +1,24 @@
+
 import numpy as np
-from sentence_transformers import SentenceTransformer
 
 
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 
+
 def load_embedding_model(
     device: str | None = None,
-) -> SentenceTransformer:
+):
+    from sentence_transformers import SentenceTransformer
+
     return SentenceTransformer(
         MODEL_NAME,
         device=device,
     )
 
+
 def generate_embeddings(
     chunks: list[dict],
-    model: SentenceTransformer,
+    model,
 ) -> list[dict]:
     if not chunks:
         return []
