@@ -57,6 +57,7 @@ app.add_middleware(
         "http://localhost:5174",
         "http://127.0.0.1:5174",
         "https://ai-research-assistant-rag-ten.vercel.app",
+        "https://ai-research-assistant-q3ddsp944-monica-yadav-r.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
