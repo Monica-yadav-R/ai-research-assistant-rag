@@ -1,4 +1,5 @@
-﻿# Python cache
+﻿
+# Python cache
 __pycache__/
 *.py[cod]
 
@@ -10,18 +11,50 @@ env/
 # Environment variables and secrets
 .env
 .env.*
+!.env.example
+
+# Frontend dependencies and build output
+node_modules/
+frontend/node_modules/
+dist/
+build/
+frontend/dist/
 
 # Test and tool caches
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.coverage
+htmlcov/
 
 # Generated application data
 data/
 vector_store/
 faiss_index/
+*.db
+*.sqlite
+*.sqlite3
+
+# Model files
+*.safetensors
+*.gguf
+*.onnx
 
 # Editor and operating system files
 .vscode/
+.idea/
 .DS_Store
 Thumbs.db
+
+# Temporary and backup files
+*.log
+*.tmp
+*.bak
+
+# Python distribution
+*.egg-info/
+.eggs/
+wheels/
+
+# IDE workspace files (optional)
+*.code-workspace

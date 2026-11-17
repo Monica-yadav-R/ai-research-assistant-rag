@@ -289,3 +289,21 @@ Implement a reusable embedding module that converts text chunks into vectors whi
 
 ### Next milestone
 Evaluate FAISS for vector storage and semantic retrieval.
+
+## pgvector: Deletion and User Isolation
+
+### What I learned
+
+1. Document chunks can be deleted from pgvector using SQL DELETE queries.
+2. User isolation ensures users can access only their own documents.
+3. Database queries must include appropriate user-level filtering.
+4. Temporary test data should be cleaned up after testing.
+
+### Practical testing
+
+- Deleted one document chunk.
+- Verified deletion.
+- Verified user isolation.
+- Cleaned temporary test data.
+
+Result: All tests passed.

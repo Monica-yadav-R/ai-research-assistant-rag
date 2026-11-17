@@ -210,3 +210,16 @@ Command: `python -m unittest discover -s tests -v`
 
 ### Next milestone
 Generate embeddings for the chunks while preserving source and page metadata.
+
+### pgvector – Document Deletion and User Isolation
+
+- [x] Implemented document chunk deletion.
+- [x] Verified deletion of document chunks.
+- [x] Tested user isolation.
+- [x] Verified that one user cannot access another user's data.
+- [x] Cleaned up temporary test data.
+
+Test result:
+- Deleted chunks: 1
+- User isolation: Verified
+- pgvector deletion test: Passed
